@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
 
 	void Start()
     {
-        
+		Time.timeScale = 0.7f;
     }
 
     void Update()
@@ -44,7 +44,7 @@ public class Spawner : MonoBehaviour
 	{
 		var forvard = transform.forward;
 		var rotation = Quaternion.AngleAxis((Random.value - 0.5f) * Angle, Vector3.up);
-		var pos = rotation * (forvard * Distance) + Vector3.up * Height + transform.position;
+		var pos = rotation * (forvard * Distance) + Vector3.up * Height + new Vector3(transform.position.x, 1, transform.position.z);
 		var fruit = Instantiate(Prefab, pos, Quaternion.identity);
 		fruits.AddLast(fruit);
 		fruit.gameObject.GetComponent<Rigidbody>().AddForce(Force * Vector3.up, ForceMode.Impulse);
