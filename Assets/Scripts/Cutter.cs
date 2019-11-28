@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Cutter : MonoBehaviour
 {
+	public Spawner spawner;
 	public GameObject plane;
 	public Transform objectContainer;
 
@@ -121,7 +123,8 @@ public class Cutter : MonoBehaviour
 		}
 
 		// Create new Sliced object with the other mesh
-		GameObject newObject = Instantiate(obj, objectContainer);
+		var newObject = Instantiate(obj, objectContainer);
+		spawner.NewFruitCut(newObject);
 		newObject.transform.SetPositionAndRotation(obj.transform.position, obj.transform.rotation);
 		var newObjMesh = newObject.GetComponent<MeshFilter>().mesh;
 
@@ -142,11 +145,18 @@ public class Cutter : MonoBehaviour
 	/// </summary>
 	void ReplaceMesh(Mesh mesh, TempMesh tempMesh, MeshCollider collider = null)
 	{
+		//var colors = new Color32[tempMesh.vertices.Count];
+		//var color = mesh.colors32[0];
+		//for (int i = 0; i < colors.Length; i++) {
+		//	colors[i] = color;
+		//}
 		mesh.Clear();
 		mesh.SetVertices(tempMesh.vertices);
 		mesh.SetTriangles(tempMesh.triangles, 0);
 		mesh.SetNormals(tempMesh.normals);
 		mesh.SetUVs(0, tempMesh.uvs);
+		//mesh.SetColors();
+		//mesh.colors32 = colors;
 
 		//mesh.RecalculateNormals();
 		mesh.RecalculateTangents();

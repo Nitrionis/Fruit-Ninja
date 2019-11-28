@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-	public GameObject Prefab;
+	public FruitsManager fruitsManager;
 	public float Angle;
 	public float Distance;
 	public float MaxOffset;
@@ -38,14 +38,25 @@ public class Spawner : MonoBehaviour
 			}
 			node = next;
 		}
+		node = fruitCut.First;
+		while (node != null) {
+			var next = node.Next;
+			if (node.Value.transform.position.y < Height - 1) {
+				GameObject.Destroy(node.Value);
+				fruitCut.Remove(node);
+			}
+			node = next;
+		}
 	}
+
+	public void NewFruitCut(GameObject gameObject) => fruitCut.AddLast(gameObject);
 
 	private void CreateNewFruit()
 	{
 		var forvard = transform.forward;
 		var rotation = Quaternion.AngleAxis((Random.value - 0.5f) * Angle, Vector3.up);
 		var pos = rotation * (forvard * Distance) + Vector3.up * Height + new Vector3(transform.position.x, 1, transform.position.z);
-		var fruit = Instantiate(Prefab, pos, Quaternion.identity);
+		var fruit = Instantiate(fruitsManager.GetNextFruit(), pos, Random.rotation);
 		fruits.AddLast(fruit);
 		fruit.gameObject.GetComponent<Rigidbody>().AddForce(Force * Vector3.up, ForceMode.Impulse);
 	}
