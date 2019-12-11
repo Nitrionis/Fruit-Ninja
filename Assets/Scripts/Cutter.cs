@@ -189,4 +189,6 @@ public class Cutter : MonoBehaviour
 		for (i = 0; i < negatives.Count; ++i)
 			negatives[i].transform.position -= separationVector;
 	}
+
+	public static Vector3 GetDepth(Vector3 a, Vector3 b, Vector3 h) => (((b + a) / 2) - h).normalized;
 }
