@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.32289267, g: 0.56283915, b: 0.8717618, a: 1}
+  m_IndirectSpecularColor: {r: 0.37727377, g: 0.70155525, b: 1.1095068, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3697292, g: 0.7924528, b: 0.35510856, a: 1}
+  m_Color: {r: 0.9254902, g: 0.7481933, b: 0.18823528, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -754,7 +754,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 90000000000
+  m_Text: 0
 --- !u!222 &798597217
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1231,8 +1231,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -179.99998}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -120.25045, y: 143.6}
-  m_SizeDelta: {x: -873.7, y: -377.1}
+  m_AnchoredPosition: {x: -120.25045, y: 141.83}
+  m_SizeDelta: {x: -873.7, y: -387.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1062307306
 MonoBehaviour:
@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7075472, g: 0.09011214, b: 0.09011214, a: 0.392}
+  m_Color: {r: 1, g: 0.17182893, b: 0.08018869, a: 0.9098039}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1300,6 +1300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a62f0eacac8724895740e763843b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 50
 --- !u!4 &1107347112
 Transform:
   m_ObjectHideFlags: 0
@@ -1715,8 +1716,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -179.99998}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -158.80005, y: 143.6}
-  m_SizeDelta: {x: -873.7, y: -377.1}
+  m_AnchoredPosition: {x: -158.80005, y: 141.83}
+  m_SizeDelta: {x: -873.7, y: -387.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1311486484
 MonoBehaviour:
@@ -1731,7 +1732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7075472, g: 0.09011214, b: 0.09011214, a: 0.392}
+  m_Color: {r: 1, g: 0.17182893, b: 0.08018869, a: 0.9098039}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1957,8 +1958,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -179.99998}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -83.05023, y: 143.59993}
-  m_SizeDelta: {x: -873.7, y: -377.1}
+  m_AnchoredPosition: {x: -83.05023, y: 141.83}
+  m_SizeDelta: {x: -873.7, y: -387.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1373825958
 MonoBehaviour:
@@ -1973,7 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7075472, g: 0.09011214, b: 0.09011214, a: 0.392}
+  m_Color: {r: 1, g: 0.17182893, b: 0.08018869, a: 0.9098039}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2115,7 +2116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1602798391
 ParticleSystemRenderer:
   serializedVersion: 6
