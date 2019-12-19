@@ -51,7 +51,7 @@ public class Cutter : MonoBehaviour
 		lineRenderer.OnLineDrawn -= OnLineDrawn;
 	}
 
-	private void OnLineDrawn(Vector3 start, Vector3 end, Vector3 depth)
+	public void OnLineDrawn(Vector3 start, Vector3 end, Vector3 depth, GameObject[] customSlice = null)
 	{
 		var planeTangent = (end - start).normalized;
 
@@ -63,13 +63,13 @@ public class Cutter : MonoBehaviour
 
 		if (drawPlane) DrawPlane(start, end, normalVec);
 
-		SliceObjects(start, normalVec);
+		SliceObjects(start, normalVec, customSlice);
 	}
 
 
-	void SliceObjects(Vector3 point, Vector3 normal)
+	private void SliceObjects(Vector3 point, Vector3 normal, GameObject[] customSlice = null)
 	{
-		var toSlice = GameObject.FindGameObjectsWithTag("Sliceable");
+		var toSlice = customSlice ?? GameObject.FindGameObjectsWithTag("Sliceable");
 
 		// Put results in positive and negative array so that we separate all meshes if there was a cut made
 		List<Transform> positive = new List<Transform>(),

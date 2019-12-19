@@ -2,7 +2,7 @@
 
 public class ScreenLineRenderer : MonoBehaviour
 {
-	public delegate void LineDrawnHandler(Vector3 begin, Vector3 end, Vector3 depth);
+	public delegate void LineDrawnHandler(Vector3 begin, Vector3 end, Vector3 depth, GameObject[] customSlice);
 	public event LineDrawnHandler OnLineDrawn;
 
 	private bool dragging;
@@ -52,7 +52,8 @@ public class ScreenLineRenderer : MonoBehaviour
 			OnLineDrawn?.Invoke(
 				startRay.GetPoint(cam.nearClipPlane),
 				endRay.GetPoint(cam.nearClipPlane),
-				endRay.direction.normalized);
+				endRay.direction.normalized, 
+				null);
 		}
 	}
 
