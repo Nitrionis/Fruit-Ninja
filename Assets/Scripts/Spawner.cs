@@ -12,6 +12,8 @@ public class Spawner : MonoBehaviour
 	public float Height;
 	public int MaxFruisCount;
 
+    public LifeController lController;
+
 	private LinkedList<GameObject> fruits = new LinkedList<GameObject>();
 	private LinkedList<GameObject> fruitCut = new LinkedList<GameObject>();
 
@@ -34,6 +36,7 @@ public class Spawner : MonoBehaviour
 			var next = node.Next;
 			if (node.Value.transform.position.y < Height - 1) {
 				GameObject.Destroy(node.Value);
+                lController?.AddDamage(); //To damage
 				fruits.Remove(node);
 			}
 			node = next;

@@ -18,6 +18,8 @@ public class Cutter : MonoBehaviour
 	// Reference to the line renderer
 	public ScreenLineRenderer lineRenderer;
 
+    public ScoreController sController;
+
 	private MeshCutter meshCutter;
 	private TempMesh biggerMesh, smallerMesh;
 
@@ -136,7 +138,9 @@ public class Cutter : MonoBehaviour
 		(posBigger ? positiveObjects : negativeObjects).Add(obj.transform);
 		(posBigger ? negativeObjects : positiveObjects).Add(newObject.transform);
 
-		return true;
+        sController?.AddScore();
+
+        return true;
 	}
 
 

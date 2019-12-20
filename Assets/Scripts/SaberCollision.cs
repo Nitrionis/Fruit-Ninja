@@ -1,17 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SaberCollision : MonoBehaviour
 {
-	public Transform hand;
+	public Transform suberRotation;
 	public TrackingPoint trackingPoint;
 	public Cutter cutter;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public LifeController lController;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -22,7 +16,8 @@ public class SaberCollision : MonoBehaviour
 			Cutter.GetDepth(
 				trackingPoint.prevPosition,
 				trackingPoint.currPosition,
-				hand.transform.position),
+                suberRotation.transform.position),
 			new GameObject[] { other.gameObject });
+        //lController?.AddDamage();
 	}
 }

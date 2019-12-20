@@ -21,6 +21,9 @@ public class ScoreController : MonoBehaviour
 
     void Update() => timeAfterLastSlice += Time.deltaTime;
 
+    //Add score for one slice
+    public void AddScore() => AddScore(1);
+
     public void AddScore(int valueFruits)
     {
         combo = (timeSlice >= timeAfterLastSlice)? combo+valueFruits: valueFruits;
