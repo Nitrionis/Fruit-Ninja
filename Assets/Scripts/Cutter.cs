@@ -19,6 +19,8 @@ public class Cutter : MonoBehaviour
 	public ScreenLineRenderer lineRenderer;
 
     public ScoreController sController;
+    public GameObject fruitSliceEffect;
+    public AudioSource sliceSample;
 
 	private MeshCutter meshCutter;
 	private TempMesh biggerMesh, smallerMesh;
@@ -139,7 +141,13 @@ public class Cutter : MonoBehaviour
 		(posBigger ? negativeObjects : positiveObjects).Add(newObject.transform);
 
         sController?.AddScore();
+        //audio
+        sliceSample.Play();
+        //slice effect
+        if (fruitSliceEffect != null)  Instantiate(fruitSliceEffect, obj.transform);
 
+        obj.tag = "nonSlisable";
+        newObject.tag= "nonSlisable";
         return true;
 	}
 

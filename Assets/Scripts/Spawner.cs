@@ -36,7 +36,9 @@ public class Spawner : MonoBehaviour
 			var next = node.Next;
 			if (node.Value.transform.position.y < Height - 1) {
 				GameObject.Destroy(node.Value);
-                lController?.AddDamage(); //To damage
+
+                if(node.Value.tag == "Sliceable") lController?.AddDamage(); //To damage
+
 				fruits.Remove(node);
 			}
 			node = next;
