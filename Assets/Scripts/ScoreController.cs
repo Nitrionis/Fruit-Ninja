@@ -4,6 +4,7 @@ using UnityEngine;
 public class ScoreController : MonoBehaviour
 {
     public Text scoreText;
+    public UIVisibleChange _visibleChanged;
 
     [SerializeField]
     private float timeSlice = 1.0f; //Время м-ду срезами
@@ -30,6 +31,7 @@ public class ScoreController : MonoBehaviour
         score += scoreForOneFruit * valueFruits;
         timeAfterLastSlice = 0;
         UpdateGUIScore(this.score);
+        _visibleChanged?.ActivateText(combo);
     }
 
     private void UpdateGUIScore(int value) => scoreText.text = value.ToString();
