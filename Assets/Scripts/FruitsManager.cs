@@ -33,13 +33,17 @@ public class FruitsManager : MonoBehaviour
 	public GameObject kiwiLoadZero;
 	public GameObject kiwiLoadOne;
 
+	[Space(10)]
+	[Header("Bomb")]
+	public GameObject bombZero;
+
 	private GameObject[] fruitsLoadZero;
 	private GameObject[] fruitsLoadOne;
 
 	void Awake()
 	{
-		fruitsLoadZero = new GameObject[5];
-		fruitsLoadOne = new GameObject[5];
+		fruitsLoadZero = new GameObject[6];
+		fruitsLoadOne = new GameObject[6];
 
 		int loadZeroIndex = 0;
 		int loadOneIndex = 0;
@@ -78,11 +82,18 @@ public class FruitsManager : MonoBehaviour
 		//meshFilter = kiwiLoadOne.GetComponent<MeshFilter>();
 		//Сolorize(meshFilter.mesh, strawberryColor);
 		fruitsLoadOne[loadOneIndex++] = kiwiLoadOne;
+
+		//meshFilter = kiwiLoadZero.GetComponent<MeshFilter>();
+		//Сolorize(meshFilter.mesh, strawberryColor);
+		fruitsLoadZero[loadZeroIndex++] = bombZero;
+		//meshFilter = kiwiLoadOne.GetComponent<MeshFilter>();
+		//Сolorize(meshFilter.mesh, strawberryColor);
+		fruitsLoadOne[loadOneIndex++] = bombZero;
 	}
 
 	public GameObject GetNextFruit()
 	{
-		int index = (int)(Random.value * fruitsLoadZero.Length);
+		int index = (int)(0.99f * Random.value * fruitsLoadZero.Length);
 		return useLoadZero ? fruitsLoadZero[index] : fruitsLoadOne[index];
 	}
 

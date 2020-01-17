@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
 	public float Height;
 	public int MaxFruisCount;
 
-    public LifeController lController;
+	public LifeController lController;
 
 	private LinkedList<GameObject> fruits = new LinkedList<GameObject>();
 	private LinkedList<GameObject> fruitCut = new LinkedList<GameObject>();
@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
 	void Start()
     {
 		Time.timeScale = 0.7f;
-    }
+	}
 
     void Update()
     {
@@ -37,7 +37,9 @@ public class Spawner : MonoBehaviour
 			if (node.Value.transform.position.y < Height - 1) {
 				GameObject.Destroy(node.Value);
 
-                if(node.Value.tag == "Sliceable") lController?.AddDamage(); //To damage
+                if(node.Value.tag == "Sliceable" && node.Value.layer != 4) {
+					lController?.AddDamage(); //To damage
+				}
 
 				fruits.Remove(node);
 			}

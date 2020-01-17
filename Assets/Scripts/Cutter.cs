@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Cutter : MonoBehaviour
 {
+	public GameObject fruitsChild;
+	public GameStarter gameStarter;
 	public Spawner spawner;
 	public GameObject plane;
 	public Transform objectContainer;
@@ -100,6 +102,8 @@ public class Cutter : MonoBehaviour
 			SeparateMeshes(positive, negative, normal);
 	}
 
+	private int uiSliceCount = 0;
+
 	bool SliceObject(ref Plane slicePlane, GameObject obj, List<Transform> positiveObjects, List<Transform> negativeObjects)
 	{
 		var mesh = obj.GetComponent<MeshFilter>().mesh;
@@ -140,7 +144,17 @@ public class Cutter : MonoBehaviour
 		(posBigger ? positiveObjects : negativeObjects).Add(obj.transform);
 		(posBigger ? negativeObjects : positiveObjects).Add(newObject.transform);
 
-        sController?.AddScore();
+		if (obj.layer != /*UI*/5) {
+			sController?.AddScore();
+		} else {
+			uiSliceCount += 1;
+			if (uiSliceCount == 5) {
+				gameStarter.GoToGameMode();
+				for (int i = 0; i < fruitsChild.transform.childCount; i++) {
+					fruitsChild.transform.GetChild(i).gameObject.SetActive(false);
+				}
+			}
+		}
         //audio
         sliceSample.Play();
         //slice effect

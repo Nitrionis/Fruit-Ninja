@@ -1,28 +1,44 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LifeController : MonoBehaviour
 {
+
+	public GameObject gameOverPanel;
     public float timeBetweenDamages;
     public GameObject[] lifes;
 
     private int Pos;
     private float timeAfterLastDamage;
 
+	private float sceneLoadWait = 0;
+
     void Start()
     {
-        Pos = (lifes!=null)? lifes.Length-1: -1;
+		Explosion.IsNeedLoadScene = false;
+
+		Pos = (lifes!=null)? lifes.Length-1: -1;
 
         if (Pos == -1) EndGame();
 
         timeAfterLastDamage = timeBetweenDamages;
     }
 
-    void Update() => timeAfterLastDamage += Time.deltaTime;
+	void Update()
+	{
+		timeAfterLastDamage += Time.deltaTime;
+		if (Explosion.IsNeedLoadScene) {
+			sceneLoadWait += Time.deltaTime;
+			if (sceneLoadWait >= 1) {
+				SceneManager.LoadScene("VitalyTestScene");
+			}
+		}
+	}
 
-    /// <summary>
-    /// Add one damage
-    /// </summary>
-    public void AddDamage() => AddDamage(1);
+	/// <summary>
+	/// Add one damage
+	/// </summary>
+	public void AddDamage() => AddDamage(1);
 
     /// <summary>
     /// Set Character damage
@@ -72,7 +88,9 @@ public class LifeController : MonoBehaviour
     public void EndGame()
     {
         this.GetComponent<Spawner>().enabled = false;
-        
-        //show dead screen for reset level
-    }
+		SceneManager.LoadScene("VitalyTestScene");
+
+		//gameOverPanel.SetActive(true);
+		//show dead screen for reset level
+	}
 }

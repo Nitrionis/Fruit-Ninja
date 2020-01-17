@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class ScoreController : MonoBehaviour
 {
-    public Text scoreText;
+	public static int LastScore = 0;
+
+	public Text scoreText;
     public UIVisibleChange _visibleChanged;
 
     [SerializeField]
@@ -34,5 +36,9 @@ public class ScoreController : MonoBehaviour
         _visibleChanged?.ActivateText(combo);
     }
 
-    private void UpdateGUIScore(int value) => scoreText.text = value.ToString();
+	private void UpdateGUIScore(int value)
+	{
+		LastScore = value;
+		scoreText.text = value.ToString();
+	}
 }

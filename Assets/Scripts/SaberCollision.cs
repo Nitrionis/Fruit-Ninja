@@ -18,6 +18,5 @@ public class SaberCollision : MonoBehaviour
 				trackingPoint.currPosition,
                 suberRotation.transform.position),
 			new GameObject[] { other.gameObject });
-        //lController?.AddDamage();
 	}
 }
